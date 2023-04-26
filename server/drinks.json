@@ -1,0 +1,191 @@
+[
+    {
+            "id": 1,
+            "name": "Rum-Cola",
+            "ingredients": {
+                "rum": 40,
+                "cola": 160
+            },
+            "img": "static/images/drinks/rumcola.jpg"
+    }, {
+            "id": 2,
+            "name": "Tequila-Sunrise",
+            "ingredients": {
+                "tequila": 30,
+                "limette": 10,
+                "orange": 150,
+                "sirup": 10
+            },
+            "img": "static/images/drinks/tequilasunrise.jpg"
+    }, {
+            "id": 3,
+            "name": "Lynchburg",
+            "ingredients": {
+                "whisky": 40,
+                "limette": 20,
+                "sprite": 150
+            },
+            "img": "static/images/drinks/lynchburg.jpg"
+    }, {
+            "id": 4,
+            "name": "Caipi",
+            "ingredients": {
+                "rum": 40,
+                "sirup": 10,
+                "limette": 20
+            },
+            "img": "static/images/drinks/caipi.jpg"
+    }, {
+            "id": 5,
+            "name": "Hurricane",
+            "ingredients": {
+                "rum": 40,
+                "orange": 150,
+                "sirup": 10
+            },
+            "img": "static/images/drinks/hurricane.jpg"
+    },
+    {
+            "id": 6,
+            "name": "Whisky-Sour",
+            "ingredients": {
+                "whisky": 40,
+                "limette": 40,
+                "sirup": 10
+            },
+            "img": "static/images/drinks/wsour.jpg"
+    }, {
+            "id": 7,
+            "name": "Pina-Colada",
+            "ingredients": {
+                "rum": 40,
+                "coco": 40,
+                "ananas": 100
+            },
+            "img": "static/images/drinks/cubalibre.jpg"
+    }, {   
+            "id": 8,
+            "name": "Long-Island",
+            "ingredients": {
+                "rum": 40,
+                "tequila": 40,
+                "orange": 40,
+                "cola": 60
+            },
+            "img": "static/images/drinks/longisland.jpg"
+    }, {
+            "id": 9,
+            "name": "Mai Tai",
+            "ingredients": {
+                "rum": 40,
+                "ananas": 150,
+                "sirup": 10
+            },
+            "img": "static/images/drinks/maitai.jpg"
+    }, {
+            "id": 10,
+            "name": "Cuba Libre",
+            "ingredients": {
+                "rum": 40,
+                "cola": 150,
+                "limette": 10
+            },
+            "img": "static/images/drinks/cubalibre.jpg"
+    }, {
+            "id": 11,
+            "name": "Margarita",
+            "ingredients": {
+                "tequila": 50,
+                "sirup": 20,
+                "limette": 50
+            },
+            "img": "static/images/drinks/margarita.jpg"
+    }, {
+            "id": 12,
+            "name": "Gin-Tonic",
+            "ingredients": {
+                "gin": 40,
+                "tonic": 160
+            },
+            "img": "static/images/drinks/gintonic.jpg"
+    }, {
+            "id": 13,
+            "name": "Planters",
+            "ingredients": {
+                "rum": 40,
+                "ananas": 60,
+                "orange": 60,
+                "sirup": 20
+            },
+            "img": "static/images/drinks/planters.jpg"
+    }, {
+        "id": 14,
+        "name": "Vodka-O",
+        "ingredients": {
+            "vodka": 40,
+            "orange": 160
+        },
+        "img": "static/images/drinks/vodkao.jpg"
+    }, {
+        "id": 15,
+        "name": "Cantarito",
+        "ingredients": {
+            "tequila": 40,
+            "limette": 20,
+            "orange": 50,
+            "paloma": 100
+        },
+        "img": "static/images/drinks/cantarito.jpg"
+    }, {
+        "id": 16,
+        "name": "Sterni-Cola",
+        "ingredients": {
+            "sternmarke": 40,
+            "cola": 160
+        },
+        "img": "static/images/drinks/colasternmarke.jpg"
+    }, {
+        "id": 17,
+        "name": "Korn-Cola",
+        "ingredients": {
+            "korn": 40,
+            "cola": 160
+        },
+        "img": "static/images/drinks/colakorn.jpg"
+    }, {
+        "id": 18,
+        "name": "Sterni-Fanta",
+        "ingredients": {
+            "sternmarke": 40,
+            "fanta": 160
+        },
+        "img": "static/images/drinks/fanta1.jpg"
+    }, {
+        "id": 19,
+        "name": "Korn-Fanta",
+        "ingredients": {
+            "korn": 40,
+            "fanta": 160
+        },
+        "img": "static/images/drinks/fanta2.jpg"
+    }, {
+        "id": 20,
+        "name": "Vodka-Cola",
+        "ingredients": {
+            "vodka": 40,
+            "cola": 160
+        },
+        "img": "static/images/drinks/vodkacola.jpg"
+    }, {
+        "id": 21,
+        "name": "Eimer",
+        "ingredients": {
+            "rum": 20,
+            "vodka": 20,
+            "ananas": 60,
+            "orange": 60,
+            "cola": 40
+        },
+        "img": "static/images/drinks/eimer.jpg"
+    }   
+]

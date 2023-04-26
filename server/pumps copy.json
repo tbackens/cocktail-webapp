@@ -1,0 +1,50 @@
+[
+    {
+        "gpio": 0,
+        "id": 0,
+        "img": "static/images/bottles/rum.png",
+        "name": "rum"
+    },
+    {
+        "gpio": 0,
+        "id": 1,
+        "img": "static/images/bottles/tequila.png",
+        "name": "tequila"
+    },
+    {
+        "gpio": 0,
+        "id": 2,
+        "img": "static/images/bottles/vodka.png",
+        "name": "vodka"
+    },
+    {
+        "gpio": 0,
+        "id": 3,
+        "img": "static/images/bottles/orange.png",
+        "name": "orange"
+    },
+    {
+        "gpio": 0,
+        "id": 4,
+        "img": "static/images/bottles/limette.png",
+        "name": "limette"
+    },
+    {
+        "gpio": 0,
+        "id": 5,
+        "img": "static/images/bottles/cola.png",
+        "name": "cola"
+    },
+    {
+        "gpio": 0,
+        "id": 6,
+        "img": "static/images/bottles/fanta.png",
+        "name": "fanta"
+    },
+    {
+        "gpio": 0,
+        "id": 7,
+        "img": "static/images/bottles/sprite.png",
+        "name": "sprite"
+    }
+]
