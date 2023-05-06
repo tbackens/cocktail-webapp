@@ -1,4 +1,4 @@
-from flask import Flask, Response, jsonify, request
+from flask import Flask, jsonify, request
 import json
 from flask_cors import CORS
 from options import bottles_objects
@@ -74,6 +74,15 @@ def start_cocktail(obj):
         time.sleep(runtime / 100)
     pump_thread.join()
     socket.emit('receive_end_signal', 'ENDE')
+
+@socket.on('start_manual')
+def start_manual(data):
+    factor = 0.1
+    print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
+    time.sleep(factor * data['value'])
+    print('pump stopped')
+    socket.emit('pump_stopped_signal')
+
 
 
 @app.route('/cocktails', methods=['GET'])

@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-
-const URL = 'http://192.168.0.153:5001/cocktails'
+import { cocktailsURL } from './url_settings'
 
 const CocktailList = (props) => {
     const [cocktails, setCocktails]= useState([])
 
+
+
     const getCocktails = async () => {
-        const response = await fetch(URL);
+        const response = await fetch(cocktailsURL);
         const data = await response.json();
         setCocktails(data);
     };

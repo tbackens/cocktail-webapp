@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { pumpsURL, optionsURL, updateURL } from './url_settings';
 
-const PUMPS_URL = 'http://192.168.0.153:5001/pumps';
-const OPTIONS_URL = 'http://192.168.0.153:5001/options';
-const UPDATE_URL = 'http://192.168.0.153:5001/pumps/update';
 
 
 const Settings = () => {
@@ -15,19 +13,19 @@ const Settings = () => {
     const [showButtons, setShowButtons] = useState(false);
 
     const getPumps = async () => {
-        const result = await fetch(PUMPS_URL);
+        const result = await fetch(pumpsURL);
         const data = await result.json();
         setPumps(data);
     };
 
     const getOptions = async () => {
-        const result = await fetch(OPTIONS_URL);
+        const result = await fetch(optionsURL);
         const data = await result.json();
         setOptions(data);
     };
 
     const updatePumps = async () => {
-        const res = await fetch(UPDATE_URL, {method: 'POST', body: JSON.stringify(pumps)});
+        const res = await fetch(updateURL, {method: 'POST', body: JSON.stringify(pumps)});
         const data = await res.json();
         setShowButtons(false);
         return data;

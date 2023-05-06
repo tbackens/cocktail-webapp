@@ -7,6 +7,10 @@ import Cocktail from './components/Cocktail';
 import QrCode from './components/QrCode';
 import Settings from './components/Settings';
 import Final from './components/Final';
+import Mix from './components/Mix';
+import ManualMix from './components/ManualMix';
+
+
 
 
 function App() {
@@ -19,6 +23,8 @@ function App() {
         <Route path='/qr' element={<QrCode/>}/>
         <Route path='/settings' element={<Settings/>}/>
         <Route path='/final' element={<Final/>} />
+        <Route path='/mix' element={<Mix/>} />
+        <Route path='/manual' element={<ManualMix/>} />
       </Routes>
       <Footer/>
     </div>
