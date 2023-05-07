@@ -13,7 +13,6 @@ const Nav = () => {
             <div className="navbar-nav">
                 <Link className="nav-item nav-link active" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/">Cocktails <span className="sr-only">(current)</span></Link>
                 <Link className="nav-item nav-link" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/manual">Manuell Mixen</Link>
-                <Link className="nav-item nav-link" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/">Spülen</Link>
                 <Link className="nav-item nav-link" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/settings">Einstellungen</Link>
                 <Link className="nav-item nav-link" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/qr">Connect</Link>
             </div>
