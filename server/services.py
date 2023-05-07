@@ -1,20 +1,22 @@
 import json
 import time
 import threading
+import sys
+import os
 
 status = 0
 
 def get_json_pumps():
-    with open('/Users/t.backens/VS_code/projects/cocktail-webserver/server/pumps.json') as pumps:
+    with open(os.path.join(sys.path[0] ,'pumps.json')) as pumps:
         pumps = json.load(pumps)
         return pumps
 
 def filter_cocktails():
     all_cocktails = []
-    with open('/Users/t.backens/VS_code/projects/cocktail-webserver/server/drinks.json') as drinks:
+    with open(os.path.join(sys.path[0] ,'drinks.json')) as drinks:
         all_cocktails = json.load(drinks)
     pumps = []
-    with open('/Users/t.backens/VS_code/projects/cocktail-webserver/server/pumps.json') as pumps:
+    with open(os.path.join(sys.path[0] ,'pumps.json')) as pumps:
         pumps = json.load(pumps)
     pump_names = []
     for pump in pumps:

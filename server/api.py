@@ -6,6 +6,8 @@ from services import filter_cocktails, mix_cocktail, get_json_pumps
 from flask_socketio import SocketIO
 import time
 from threading import Thread
+import os
+import sys
 
 app = Flask(__name__)
 
@@ -93,7 +95,7 @@ def get_cocktails():
 @app.route('/pumps', methods=['GET'])
 def get_pumps():
     data = []
-    with open('/Users/t.backens/VS_code/projects/cocktail-webserver/server/pumps.json') as pumps:
+    with open(os.path.join(sys.path[0] ,'pumps.json')) as pumps:
         data = json.load(pumps)
     
     return jsonify(data)
@@ -102,7 +104,7 @@ def get_pumps():
 def update_pumps():
     req_data = request.get_data().decode()
 
-    file = open('/Users/t.backens/VS_code/projects/cocktail-webserver/server/pumps.json', 'w+')
+    file = open(os.path.join(sys.path[0] ,'pumps.json'), 'w+')
     file.write(req_data)
     file.close()
     return req_data
