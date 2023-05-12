@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client'
 
-export const baseURL = 'http://192.168.8.255:5001'
+export const baseURL = 'http://192.168.8.122:5001'
 
 export const socket = io(baseURL, {autoConnect: false})
 
