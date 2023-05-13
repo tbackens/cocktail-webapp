@@ -1,4 +1,5 @@
 #!/bin/sh 
-npm start &
+ip=$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}') 
+HOST=$ip npm start &
 cd server
 python3 api.py

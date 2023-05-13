@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { cocktailsURL } from './url_settings'
+import { getIp } from './url_settings'
 
 const CocktailList = (props) => {
     const [cocktails, setCocktails]= useState([])

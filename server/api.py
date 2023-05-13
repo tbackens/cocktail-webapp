@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 import json
 from flask_cors import CORS
 from options import bottles_objects
@@ -8,6 +8,13 @@ import time
 from threading import Thread
 import os
 import sys
+
+
+
+import socket
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80))
+ip = (s.getsockname()[0])
 
 app = Flask(__name__)
 
@@ -86,7 +93,6 @@ def start_manual(data):
     socket.emit('pump_stopped_signal')
 
 
-
 @app.route('/cocktails', methods=['GET'])
 def get_cocktails():
     filter = filter_cocktails()
@@ -134,4 +140,4 @@ def start_mix():
 
 
 if __name__ == '__main__':
-    socket.run(app, debug=True, host="192.168.8.122", port=5001)
+    socket.run(app, debug=True, host=ip, port=5001)
