@@ -1,6 +1,19 @@
 import React from 'react'
+import QRCode from 'react-qr-code'
 
 const QrCode = () => {
+
+  const host = window.location.host
+  const ip = 'http://' + host.slice(0, -5) + ':3000'; 
+
+  const qr = (
+    <QRCode
+      value={ip}
+      bgColor='white'
+      style={{ height: "auto", maxWidth: "65%", width: "65%" }}
+    
+    />
+  )
   return (
     <div className="container">
       <div className="row mt-2">
@@ -13,7 +26,7 @@ const QrCode = () => {
         <div className="col">
           <div className="text-center ">
             <h1 style={{fontFamily: "monospace",  fontSize: '30px'}}>Menü</h1>
-            <img className='img-fluid mt-1' src='static/images/qr-code.png' alt='menu-qr' style={{maxWidth: "65%"}}/>
+            {qr}
           </div>
         </div>
       </div>
