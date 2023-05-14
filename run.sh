@@ -1,8 +1,8 @@
 #!/bin/sh 
-#ip=$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}') 
+ip=$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}') 
 #HOST=$ip npm start &
 npm start &
-chromium-browser --start-fullscreen
+chromium-browser --start-fullscreen ${ip}:3000
 cd server
 python3 api.py
 
