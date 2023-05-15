@@ -16,7 +16,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 ip = (s.getsockname()[0])
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../build', static_url_path='/')
 
 
 CORS(app)
@@ -47,6 +47,10 @@ def pump(ings, pump_ids, values, gpios, factor):
         time.sleep(value * factor)
 
 
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 @socket.on('start_cocktail')
 def start_cocktail(obj):
@@ -140,4 +144,4 @@ def start_mix():
 
 
 if __name__ == '__main__':
-    socket.run(app, debug=True, host=ip, port=5001)
+    socket.run(app, debug=False, host=ip, port=5001, allow_unsafe_werkzeug=True)

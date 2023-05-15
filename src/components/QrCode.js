@@ -4,7 +4,7 @@ import QRCode from 'react-qr-code'
 const QrCode = () => {
 
   const host = window.location.host
-  const ip = 'http://' + host.slice(0, -5) + ':3000'; 
+  const ip = 'http://' + host.slice(0, -5) + ':5001'; 
 
   const qr = (
     <QRCode
