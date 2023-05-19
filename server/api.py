@@ -8,7 +8,10 @@ import time
 from threading import Thread
 import os
 import sys
+import RPi.GPIO as GPIO
 
+
+GPIO.setmode(GPIO.BCM)
 
 
 import socket
@@ -33,9 +36,20 @@ class PumpThread(Thread):
         self.gpios = gpios
         self.factor = factor
     def run(self):
-        for ing, pump, value, gpio in zip(self.ings, self.pumps, self.values, self.gpios):
-            socket.emit('receive_pump_status', (f'PUMPE {pump + 1}: {ing} -- {value}ml'))
-            time.sleep(value * self.factor)
+        try:
+            for gpio in self.gpios:
+                GPIO.setup(gpio, GPIO.OUT)
+            for ing, pump, value, gpio in zip(self.ings, self.pumps, self.values, self.gpios):
+                GPIO.output(gpio, True)
+                socket.emit('receive_pump_status', (f'PUMPE {pump + 1}: {ing} -- {value}ml'))
+                time.sleep(value * self.factor)
+                GPIO.output(gpio, False)
+
+        except: print('Something went wrong')
+        
+        finally:
+            GPIO.cleanup()
+
 
 
 
