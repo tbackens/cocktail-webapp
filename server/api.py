@@ -8,24 +8,26 @@ import time
 from threading import Thread
 import os
 import sys
+import socket
 import RPi.GPIO as GPIO
 
 
 GPIO.setmode(GPIO.BCM)
 
 
-import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 ip = (s.getsockname()[0])
 
-app = Flask(__name__, static_folder='../build', static_url_path='/')
 
+
+app = Flask(__name__, static_folder='../build', static_url_path='/')
 
 CORS(app)
 
-
 socket = SocketIO(app, cors_allowed_origins='*', async_mode='threading')
+
+
 
 class PumpThread(Thread):
     def __init__(self,ings=[], pumps=[], values=[],gpios=[], factor=0):
@@ -46,19 +48,9 @@ class PumpThread(Thread):
                 GPIO.output(gpio, False)
 
         except: print('Something went wrong')
-        
+
         finally:
             GPIO.cleanup()
-
-
-
-
-
-def pump(ings, pump_ids, values, gpios, factor):
-    print(ings)
-    for ing, pump, value, gpio in zip(ings, pump_ids, values, gpios):
-        #print(f'PUMPE {pump + 1}: {ing} -- {value}ml')
-        time.sleep(value * factor)
 
 
 
@@ -138,22 +130,13 @@ def get_options():
     
     return jsonify(bottles_objects)
 
-@app.route('/<img>', methods=['GET'])
-def get_image(img):
-    
-    return img
-
-
-@app.route('/cocktails/add', methods=['POST'])
-def add_cocktail():
-    pass
 
 @app.route('/cocktails/start', methods=['GET', 'POST'])
 def start_mix():
     req_data = request.get_data().decode()
-
-
     return req_data
+
+
 
 
 
