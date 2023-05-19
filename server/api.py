@@ -1,8 +1,8 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request
 import json
 from flask_cors import CORS
 from options import bottles_objects
-from services import filter_cocktails, mix_cocktail, get_json_pumps
+from services import filter_cocktails, get_json_pumps
 from flask_socketio import SocketIO
 import time
 from threading import Thread
