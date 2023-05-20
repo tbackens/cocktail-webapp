@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import json
 from flask_cors import CORS
 from options import bottles_objects
-from services import filter_cocktails, get_json_pumps
+from services import filter_cocktails, get_json_pumps, getIP
 from flask_socketio import SocketIO
 import time
 from threading import Thread
@@ -13,13 +13,6 @@ import RPi.GPIO as GPIO
 
 # - Initialisation ---------------------------------------------
 GPIO.setmode(GPIO.BCM)
-
-#Get the local IP address
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.connect(("8.8.8.8", 80))
-ip = (s.getsockname()[0])
-
-
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -145,4 +138,4 @@ def start_mix():
 
 
 if __name__ == '__main__':
-    socket.run(app, debug=False, host=ip, port=5001, allow_unsafe_werkzeug=True)
+    socket.run(app, debug=False, host=getIP(), port=5001, allow_unsafe_werkzeug=True)

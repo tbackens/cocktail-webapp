@@ -1,10 +1,8 @@
 import json
-import time
-import threading
 import sys
 import os
+import socket
 
-status = 0
 
 def get_json_pumps():
     with open(os.path.join(sys.path[0] ,'pumps.json')) as pumps:
@@ -36,51 +34,11 @@ def filter_cocktails():
 
     return filtered_cocktails
 
-
-
-def mix_cocktail():
-    print('start')
-    time.sleep(3)
-    print('stop')
-
-
-
-class PumpThread(threading.Thread):
-    def __init__(self, data):
-        super(PumpThread, self).__init__()
-        self.data = data
+def getIP():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = (s.getsockname()[0])
+    return ip
 
 
 
-    def run(self):
-        try:
-            pump_list = get_pumps()
-            factor = 0.1
-            pump_ids = []
-            ings = []
-            gpio = []
-            values = []
-            runtime = 0
-                
-            for pump in pump_list:
-                if pump['name'] in self.data['ingredients'].keys():
-                    pump_ids.append(pump['id'])
-                    gpio.append(pump['gpio'])
-                    values.append(self.data['ingredients'][pump['name']])
-                    ings.append(pump['name'])
-
-            for value in values:
-                runtime += (value * factor)
-
-            print(pump_ids)
-            print(ings)
-            print(gpio)
-            print(values)
-
-            for ing, pump, value, gpio in zip(ings, pump_ids, values, gpio):
-                print(f'PUMPE {pump + 1}: {ing} -- {value}ml')
-                time.sleep(value * factor)
-
-
-        except AttributeError:
-            print("no selection!")
