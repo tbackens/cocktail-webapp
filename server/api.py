@@ -11,10 +11,10 @@ import sys
 import socket
 import RPi.GPIO as GPIO
 
-
+# - Initialisation ---------------------------------------------
 GPIO.setmode(GPIO.BCM)
 
-
+#Get the local IP address
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 ip = (s.getsockname()[0])
@@ -27,7 +27,7 @@ CORS(app)
 
 socket = SocketIO(app, cors_allowed_origins='*', async_mode='threading')
 
-
+# - Threads ----------------------------------------------------
 
 class PumpThread(Thread):
     def __init__(self,ings=[], pumps=[], values=[],gpios=[], factor=0):
@@ -52,18 +52,19 @@ class PumpThread(Thread):
         finally:
             GPIO.cleanup()
 
-
+# - Initialisation of React App --------------------------------
 
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
 
+
+# - Websockets -------------------------------------------------
+
 @socket.on('start_cocktail')
 def start_cocktail(obj):
-    print(obj)
     data = obj
     
-
     pump_list = get_json_pumps()
     factor = 0.04
     pump_ids = []
@@ -82,10 +83,6 @@ def start_cocktail(obj):
     for value in values:
         runtime += (value * factor)
 
-    print(pump_ids)
-    print(ings)
-    print(gpios)
-    print(values)
     pump_thread = PumpThread(ings, pump_ids, values, gpios, factor, )
     pump_thread.start()
     for i in range(101):
@@ -97,25 +94,32 @@ def start_cocktail(obj):
 @socket.on('start_manual')
 def start_manual(data):
     factor = 0.1
-    print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
+    #print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
     time.sleep(factor * data['value'])
-    print('pump stopped')
+    #print('pump stopped')
     socket.emit('pump_stopped_signal')
 
 
+
+# - API Routes -------------------------------------------------
+
+
+
+#Get the filtered list of available Cocktails
 @app.route('/cocktails', methods=['GET'])
 def get_cocktails():
     filter = filter_cocktails()
     return jsonify(filter)
 
+#Get the list of selected pumps
 @app.route('/pumps', methods=['GET'])
 def get_pumps():
     data = []
     with open(os.path.join(sys.path[0] ,'pumps.json')) as pumps:
         data = json.load(pumps)
-    
     return jsonify(data)
 
+#Change the selection of pumps
 @app.route('/pumps/update', methods=['GET', 'POST'])
 def update_pumps():
     req_data = request.get_data().decode()
@@ -125,6 +129,7 @@ def update_pumps():
     file.close()
     return req_data
 
+#Get the list of liquid options
 @app.route('/options', methods=['GET'])
 def get_options():
     
