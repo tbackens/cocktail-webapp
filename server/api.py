@@ -91,6 +91,7 @@ def start_cocktail(obj):
     pump_thread.join()
     socket.emit('receive_end_signal', 'ENDE')
 
+
 @socket.on('start_manual')
 def start_manual(data):
     factor = 0.1
@@ -102,8 +103,6 @@ def start_manual(data):
 
 
 # - API Routes -------------------------------------------------
-
-
 
 #Get the filtered list of available Cocktails
 @app.route('/cocktails', methods=['GET'])
