@@ -10,6 +10,8 @@ import os
 import sys
 import socket
 
+# - Handler in case of not installed GPIO modulev --------------
+
 class Output():
     def setup(self, *args):
         pass
@@ -19,6 +21,8 @@ class Output():
         pass
     def cleanup(self):
         pass
+
+# - Try statement to check if GPIO module is installed ---------
 
 GPIO = Output()
 try: 
@@ -73,8 +77,7 @@ def index():
 
 @socket.on('start_cocktail')
 def start_cocktail(obj):
-    data = obj
-    
+    data = obj    
     pump_list = get_json_pumps()
     factor = 0.04
     pump_ids = []
