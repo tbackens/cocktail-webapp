@@ -8,8 +8,13 @@ import time
 from threading import Thread
 import os
 import sys
+import socket
 
 # - Handler in case of not installed GPIO modulev --------------
+
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80))
+ip = (s.getsockname()[0])
 
 class Output():
     def setup(self, *args):
@@ -166,4 +171,4 @@ def start_mix():
 
 
 if __name__ == '__main__':
-    socket.run(app, debug=False, host=getIP(), port=5001, allow_unsafe_werkzeug=True)
+    socket.run(app, debug=False, host=ip, port=5001, allow_unsafe_werkzeug=True)
