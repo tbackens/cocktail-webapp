@@ -115,6 +115,7 @@ def start_cocktail(obj):
 @socket.on('start_manual')
 def start_manual(data):
     try:
+        factor = 0.04
         print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
         GPIO.output(data['pump']['gpio'], True)
         time.sleep(factor * data['value'])
