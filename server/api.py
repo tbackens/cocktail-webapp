@@ -9,10 +9,27 @@ from threading import Thread
 import os
 import sys
 import socket
-import RPi.GPIO as GPIO
+
+class Output():
+    def setup(self, *args):
+        pass
+    def output(self, gpio, status):
+        print(f'GPIO {gpio} {status}')
+    def OUT(self):
+        pass
+    def cleanup(self):
+        pass
+
+GPIO = Output()
+try: 
+    import RPi.GPIO as gp
+    GPIO = gp
+    GPIO.setmode(GPIO.BCM)
+except:
+    print('Not able to load GPIO module')
+
 
 # - Initialisation ---------------------------------------------
-GPIO.setmode(GPIO.BCM)
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -39,9 +56,9 @@ class PumpThread(Thread):
                 socket.emit('receive_pump_status', (f'PUMPE {pump + 1}: {ing} -- {value}ml'))
                 time.sleep(value * self.factor)
                 GPIO.output(gpio, False)
-
-        except: print('Something went wrong')
-
+        except:
+            print('Something went wrong')
+            GPIO.cleanup()
         finally:
             GPIO.cleanup()
 
@@ -87,11 +104,20 @@ def start_cocktail(obj):
 
 @socket.on('start_manual')
 def start_manual(data):
-    factor = 0.1
-    #print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
-    time.sleep(factor * data['value'])
-    #print('pump stopped')
-    socket.emit('pump_stopped_signal')
+    try:
+        factor = 0.1
+        GPIO.setup(data['pump']['gpio'], GPIO.OUT)
+        #print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
+        GPIO.output(data['pump']['gpio'], True)
+        time.sleep(factor * data['value'])
+        GPIO.output(data['pump']['gpio'], False)
+        #print('pump stopped')
+        socket.emit('pump_stopped_signal')
+    except:
+        print('Something went wrong')
+        GPIO.cleanup()
+    finally:
+        GPIO.cleanup()
 
 
 
