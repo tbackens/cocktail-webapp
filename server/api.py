@@ -171,4 +171,4 @@ def start_mix():
 
 
 if __name__ == '__main__':
-    socket.run(app, debug=True, port=5001, allow_unsafe_werkzeug=True)
+    socket.run(app, debug=False, host=ip, port=5001, allow_unsafe_werkzeug=True)
