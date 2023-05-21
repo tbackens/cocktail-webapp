@@ -16,7 +16,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 ip = (s.getsockname()[0])
 
-class Output():
+"""class Output():
     def setup(self, *args):
         pass
     def output(self, gpio, status):
@@ -24,18 +24,22 @@ class Output():
     def OUT(self):
         pass
     def cleanup(self):
-        pass
+        pass"""
 
 # - Try statement to check if GPIO module is installed ---------
 
-GPIO = Output()
-try: 
+#GPIO = Output()
+import RPi.GPIO as GPIO
+pps = get_json_pumps()
+for pump in pps:
+    GPIO.setmode(pump['gpio'], GPIO.OUT)
+"""try: 
     import RPi.GPIO as gp
     GPIO = gp
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
 except:
-    print('Not able to load GPIO module')
+    print('Not able to load GPIO module')"""
 
 
 # - Initialisation ---------------------------------------------
@@ -58,14 +62,11 @@ class PumpThread(Thread):
         self.factor = factor
     def run(self):
         try:
-            for gpio in self.gpios:
-                GPIO.setup(gpio, GPIO.OUT)
             for ing, pump, value, gpio in zip(self.ings, self.pumps, self.values, self.gpios):
                 GPIO.output(gpio, True)
                 socket.emit('receive_pump_status', (f'PUMPE {pump + 1}: {ing} -- {value}ml'))
                 time.sleep(value * self.factor)
                 GPIO.output(gpio, False)
-                GPIO.cleanup()
         except:
             print('Something went wrong')
 
@@ -112,15 +113,12 @@ def start_cocktail(obj):
 @socket.on('start_manual')
 def start_manual(data):
     try:
-        factor = 0.1
-        GPIO.setup(data['pump']['gpio'], GPIO.OUT)
         print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
         GPIO.output(data['pump']['gpio'], True)
         time.sleep(factor * data['value'])
         GPIO.output(data['pump']['gpio'], False)
         print('pump stopped')
         socket.emit('pump_stopped_signal')
-        GPIO.cleanup()
     except:
         print('Something went wrong')
 
