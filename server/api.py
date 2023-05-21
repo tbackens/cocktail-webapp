@@ -31,7 +31,7 @@ ip = (s.getsockname()[0])
 #GPIO = Output()
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
+GPIO.setwarnings(True)
 pps = get_json_pumps()
 for pump in pps:
     GPIO.setup(pump['gpio'], GPIO.OUT)
@@ -171,4 +171,4 @@ def start_mix():
 
 
 if __name__ == '__main__':
-    socket.run(app, debug=False, host=ip, port=5001, allow_unsafe_werkzeug=True)
+    socket.run(app, debug=True, host=ip, port=5001, allow_unsafe_werkzeug=True)
