@@ -32,7 +32,7 @@ ip = (s.getsockname()[0])
 import RPi.GPIO as GPIO
 pps = get_json_pumps()
 for pump in pps:
-    GPIO.setmode(pump['gpio'], GPIO.OUT)
+    GPIO.setup(pump['gpio'], GPIO.OUT)
 """try: 
     import RPi.GPIO as gp
     GPIO = gp
