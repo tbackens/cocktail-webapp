@@ -117,6 +117,7 @@ def start_manual(data):
     try:
         factor = 0.04
         print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
+        print(data['pump']['gpio'])
         GPIO.output(data['pump']['gpio'], True)
         time.sleep(factor * data['value'])
         GPIO.output(data['pump']['gpio'], False)
