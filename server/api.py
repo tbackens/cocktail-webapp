@@ -8,7 +8,6 @@ import time
 from threading import Thread
 import os
 import sys
-import socket
 
 # - Handler in case of not installed GPIO modulev --------------
 
