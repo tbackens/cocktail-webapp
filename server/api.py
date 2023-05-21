@@ -72,7 +72,7 @@ class PumpThread(Thread):
 
 # - Initialisation of React App --------------------------------
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return app.send_static_file('index.html')
 
