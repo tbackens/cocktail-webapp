@@ -30,6 +30,8 @@ ip = (s.getsockname()[0])
 
 #GPIO = Output()
 import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 pps = get_json_pumps()
 for pump in pps:
     GPIO.setup(pump['gpio'], GPIO.OUT)
