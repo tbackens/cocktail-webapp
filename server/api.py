@@ -33,6 +33,7 @@ try:
     import RPi.GPIO as gp
     GPIO = gp
     GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
 except:
     print('Not able to load GPIO module')
 
@@ -64,11 +65,10 @@ class PumpThread(Thread):
                 socket.emit('receive_pump_status', (f'PUMPE {pump + 1}: {ing} -- {value}ml'))
                 time.sleep(value * self.factor)
                 GPIO.output(gpio, False)
+                GPIO.cleanup()
         except:
             print('Something went wrong')
-            GPIO.cleanup()
-        finally:
-            GPIO.cleanup()
+
 
 # - Initialisation of React App --------------------------------
 
@@ -114,17 +114,15 @@ def start_manual(data):
     try:
         factor = 0.1
         GPIO.setup(data['pump']['gpio'], GPIO.OUT)
-        #print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
+        print('start adding ' + str(data['value']) + ' ml of' + data['pump']['name'])
         GPIO.output(data['pump']['gpio'], True)
         time.sleep(factor * data['value'])
         GPIO.output(data['pump']['gpio'], False)
-        #print('pump stopped')
+        print('pump stopped')
         socket.emit('pump_stopped_signal')
+        GPIO.cleanup()
     except:
         print('Something went wrong')
-        GPIO.cleanup()
-    finally:
-        GPIO.cleanup()
 
 
 
