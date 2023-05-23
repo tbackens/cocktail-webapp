@@ -14,6 +14,7 @@ bottles = ['cola',
 'sternmarke']
 
 bottles_objects = [
+    {"name": '0 - Keine Auswahl', "id": 0, "img": "static/images/bottles/noselection.png"},
     {"name": 'cola', "id": 1, "img": "static/images/bottles/cola.png"},
     {"name": 'fanta', "id": 2, "img": "static/images/bottles/fanta.png"},
     {"name": 'sprite', "id": 3, "img": "static/images/bottles/sprite.png"},
