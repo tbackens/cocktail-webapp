@@ -22,7 +22,7 @@ bottles_objects = [
     {"name": 'maracuja', "id": 5, "img": "static/images/bottles/maracuja.png"},
     {"name": 'tonic', "id": 6, "img": "static/images/bottles/tonic.png"},
     {"name": 'limette', "id": 7, "img": "static/images/bottles/limette.png"},
-    {"name": 'sirup', "id": 8, "img": "static/images/bottles/sirup.png"},
+    {"name": 'sirup', "id": 8, "img": "static/images/bottles/grenadine.png"},
     {"name": 'vodka', "id": 9, "img": "static/images/bottles/vodka.png"},
     {"name": 'rum', "id": 10, "img": "static/images/bottles/rum.png"},
     {"name": 'whisky', "id": 11, "img": "static/images/bottles/whisky.png"},
