@@ -28,5 +28,6 @@ bottles_objects = [
     {"name": 'tequila', "id": 12, "img": "static/images/bottles/tequila.png"},
     {"name": 'korn', "id": 13, "img": "static/images/bottles/korn.png"},
     {"name": 'sternmarke', "id": 14, "img": "static/images/bottles/sternmarke.png"},
-    {"name": 'paloma', "id": 15, "img": "static/images/bottles/paloma.png"}
+    {"name": 'paloma', "id": 15, "img": "static/images/bottles/paloma.png"},
+    {"name": 'ananas', "id": 16, "img": "static/images/bottles/ananas.png"}
 ]    
