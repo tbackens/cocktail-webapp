@@ -16,7 +16,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 ip = (s.getsockname()[0])
 
-"""class Output():
+class Output():
     def setup(self, *args):
         pass
     def output(self, gpio, status):
@@ -24,24 +24,30 @@ ip = (s.getsockname()[0])
     def OUT(self):
         pass
     def cleanup(self):
-        pass"""
+        pass
+
+GPIO = Output()
 
 # - Try statement to check if GPIO module is installed ---------
 
-#GPIO = Output()
-import RPi.GPIO as GPIO
+
+"""import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(True)
 pps = get_json_pumps()
 for pump in pps:
-    GPIO.setup(pump['gpio'], GPIO.OUT)
-"""try: 
+    GPIO.setup(pump['gpio'], GPIO.OUT)"""
+
+try: 
     import RPi.GPIO as gp
     GPIO = gp
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setwarnings(True)
+    pps = get_json_pumps()
+    for pump in pps:
+        GPIO.setup(pump['gpio'], GPIO.OUT)
 except:
-    print('Not able to load GPIO module')"""
+    print('Not able to load GPIO module')
 
 
 # - Initialisation ---------------------------------------------
@@ -165,9 +171,6 @@ def get_options():
 def start_mix():
     req_data = request.get_data().decode()
     return req_data
-
-
-
 
 
 if __name__ == '__main__':

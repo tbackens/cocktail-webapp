@@ -29,7 +29,7 @@
             "img": "static/images/drinks/passion.jpg"
     }, {
             "id": 4,
-            "name": "CleanParadise(Alkoholfrei)",
+            "name": "Paradise (NO-Alk)",
             "ingredients": {
                 "ananas": 60,
                 "maracuja": 50,
@@ -74,7 +74,7 @@
                 "rum": 20,
                 "tequila": 20,
                 "orange": 40,
-                "lime": 10,
+                "limette": 10,
                 "cola": 130
             },
             "img": "static/images/drinks/longisland.jpg"
