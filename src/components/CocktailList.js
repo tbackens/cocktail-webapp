@@ -26,7 +26,7 @@ const CocktailList = (props) => {
                 <p className="card-text text-capitalize font-weight-lighter">{Object.keys(item['ingredients']).join(', ')}</p>
                 <Link to="/cocktails/mix" state={item} className='btn btn-success'>Auswählen</Link>
             </div>
-            <img className="card-img-right example-card-img-responsive m-2 rounded" src={item['img']} style={{maxWidth: '150px'}} alt={item['name']} />
+            <img className="card-img-right example-card-img-responsive m-2 rounded" src={item['img']} style={{maxWidth: '150px', height: 'auto'}} alt={item['name']} />
         </div>)
 
 

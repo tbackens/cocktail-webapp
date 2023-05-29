@@ -90,13 +90,14 @@
             "img": "static/images/drinks/maitai.jpg"
     }, {
             "id": 10,
-            "name": "Cuba Libre",
+            "name": "British Hawaii",
             "ingredients": {
-                "rum": 40,
-                "cola": 150,
-                "limette": 10
+                "whisky": 30,
+                "limette": 10,
+                "orange": 140,
+                "sirup": 10
             },
-            "img": "static/images/drinks/cubalibre.jpg"
+            "img": "static/images/drinks/britishhawaii.jpg"
     }, {
             "id": 11,
             "name": "Tequila Sour",
