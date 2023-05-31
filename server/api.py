@@ -81,7 +81,7 @@ class PumpThread(Thread):
             print('playing')
             sound = vlc.MediaPlayer('fkstzl.mp3')
             sound.play()
-            time.sleep(3)
+            time.sleep(8)
             sound.stop()
         except:
             print('Something went wrong')
