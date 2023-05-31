@@ -9,7 +9,7 @@ from threading import Thread
 import os
 import sys
 import socket
-
+import vlc
 # - Handler in case of not installed GPIO modulev --------------
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -60,6 +60,9 @@ socket = SocketIO(app, cors_allowed_origins='*', async_mode='threading')
 
 # - Threads ----------------------------------------------------
 
+
+            
+
 class PumpThread(Thread):
     def __init__(self,ings=[], pumps=[], values=[],gpios=[], factor=0):
         super(PumpThread, self).__init__()
@@ -75,11 +78,16 @@ class PumpThread(Thread):
                 socket.emit('receive_pump_status', (f'PUMPE {pump + 1}: {ing} -- {value}ml'))
                 time.sleep(value * self.factor)
                 GPIO.output(gpio, False)
+            print('playing')
+            sound = vlc.MediaPlayer('done.mp3')
+            sound.play()
+            time.sleep(3)
+            sound.stop()
         except:
             print('Something went wrong')
 
 
-# - Initialisation of React App --------------------------------
+# - Initialisation of React App --------------------------------‚
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -115,6 +123,7 @@ def start_cocktail(obj):
         socket.emit('receive_progress',i)
         time.sleep(runtime / 100)
     pump_thread.join()
+
     socket.emit('receive_end_signal', 'ENDE')
 
 
