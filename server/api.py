@@ -79,7 +79,7 @@ class PumpThread(Thread):
                 time.sleep(value * self.factor)
                 GPIO.output(gpio, False)
             print('playing')
-            sound = vlc.MediaPlayer('fkstzl.mp3')
+            sound = vlc.MediaPlayer('done.mp3')
             sound.play()
             time.sleep(8)
             sound.stop()
