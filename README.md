@@ -18,7 +18,7 @@ Users can also add single ingredients manually.
 * 8x 12v membrane pump.
 * Power supply for 12v and 5v
 
-More information about the hardware i used can be found on my website.
+More information about the hardware i used feel free to contact me.
 
 ### Software
 
@@ -77,3 +77,8 @@ To run the app automaticly after startup, you can insert the cocktail.desktop fi
 
 
 
+A new browser window will open to load the app.
+Navigate to 'connection'.
+
+Now connect your mobile device to the same wifi as your RasPi is connected to and scan the qr code shown in the app.  
+You will now have access to the machine from your device.
