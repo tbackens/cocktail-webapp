@@ -9,6 +9,7 @@ import Settings from './components/Settings';
 import Final from './components/Final';
 import Mix from './components/Mix';
 import ManualMix from './components/ManualMix';
+import CocktailSettings from './components/CocktailSettings';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/final' element={<Final/>} />
         <Route path='/mix' element={<Mix/>} />
         <Route path='/manual' element={<ManualMix/>} />
+        <Route path='/drinksettings' element={<CocktailSettings/>} />
       </Routes>
       <Footer/>
     </div>
