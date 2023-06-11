@@ -31,22 +31,22 @@ More information about the hardware i used can be found on my website.
 ## Installation
 
 1. Clone this repository to your RaspberryPi
-    `git clone https://github.com/tbackens/cocktail-webapp.git`
+`git clone https://github.com/tbackens/cocktail-webapp.git`
 
 2. Open a terminal window and navigate to the project directory.
 
 3. run nmp install.
-    `npm install`
+`npm install`
 
 4. Create a build.
-    `npm run build`
+`npm run build`
 
 5. Navigate to the server directory
-    `cd server`
+`cd server`
 
 6. Crate a virtual enviroment an install the dependencies
-    ```
-    python -m venv venv
-    pip install -r requirements.txt
-    ````
+```
+python -m venv venv
+pip install -r requirements.txt
+````
 
