@@ -72,5 +72,8 @@ run `^o` and `^x` to write and close the file.
 
 You can now start the app by clicking the desktop icon.
 
+To run the app automaticly after startup, you can insert the cocktail.desktop file into your
+`~/.config/autostart` directory.
+
 
 
