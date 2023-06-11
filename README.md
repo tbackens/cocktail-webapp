@@ -47,6 +47,7 @@ More information about the hardware i used feel free to contact me.
 6. Crate a virtual enviroment an install the dependencies  
 ```
 python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
