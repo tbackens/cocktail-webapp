@@ -12,9 +12,9 @@ Users can also add single ingredients manually.
 
 ### Main Hardware
 
-* Raspberry Pi 3b with Wifi.
+* Raspberry Pi 3b+.
 * 3.5" LCD Touchscreen
-* Relayboard (8x)
+* Relay Board (8x)
 * 8x 12v membrane pump.
 * Power supply for 12v and 5v
 
@@ -65,7 +65,7 @@ Type=Application
 Name=cocktail
 Path=/home/pi/cocktail-webapp/server
 Exec=python3 /home/pi/cocktail-webapp/server/api.py
-Terminal =	false
+Terminal=false
 ```
 
 run `^o` and `^x` to write and close the file.
