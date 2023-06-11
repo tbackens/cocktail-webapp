@@ -48,5 +48,29 @@ More information about the hardware i used can be found on my website.
 ```
 python -m venv venv
 pip install -r requirements.txt
-````
+```
+
+
+## Startup
+
+You can now run the machine by running `sh run.sh` inside the project's root directory,
+but you should create a .desktop file to run the app from your desktop or on autostart
+
+Navigate to your desktop directory and run `sudo nano cocktail.desktop`,  
+then insert the following code:  
+```
+[Desktop Entry]
+
+Type=Application
+Name=cocktail
+Path=/home/pi/cocktail-webapp/server
+Exec=python3 /home/pi/cocktail-webapp/server/api.py
+Terminal =	false
+```
+
+run `^o` and `^x` to write and close the file.
+
+You can now start the app by clicking the desktop icon.
+
+
 
