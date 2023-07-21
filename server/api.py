@@ -9,7 +9,7 @@ from threading import Thread
 import os
 import sys
 import socket
-import vlc
+#import vlc
 # - Handler in case of not installed GPIO modulev --------------
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -78,11 +78,11 @@ class PumpThread(Thread):
                 socket.emit('receive_pump_status', (f'PUMPE {pump + 1}: {ing} -- {value}ml'))
                 time.sleep(value * self.factor)
                 GPIO.output(gpio, False)
-            print('playing')
-            sound = vlc.MediaPlayer('done.mp3')
-            sound.play()
-            time.sleep(4)
-            sound.stop()
+            #print('playing')
+            #sound = vlc.MediaPlayer('done.mp3')
+            #sound.play()
+            #time.sleep(4)
+            #sound.stop()
         except:
             print('Something went wrong')
 
