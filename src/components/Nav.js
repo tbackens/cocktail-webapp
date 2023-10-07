@@ -15,7 +15,7 @@ const Nav = () => {
                 <Link className="nav-item nav-link" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/manual">Manuell Mixen</Link>
                 <Link className="nav-item nav-link" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/settings">Einstellungen</Link>
                 <Link className="nav-item nav-link" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/qr">Connect</Link>
-                <Link className="nav-item nav-link" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/drinksettings">Cocktail Einstellungen</Link>
+                <Link className="nav-item nav-link" data-toggle="collapse" data-target="#navbarNavAltMarkup" to="/clean">Reinigen</Link>
             </div>
         </div>
     </nav>
